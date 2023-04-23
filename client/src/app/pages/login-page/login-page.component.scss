@@ -1,0 +1,17 @@
+.auth-background{
+  background-image: url("../../../assets/img/auth-background.bmp");
+  background-size: cover;
+  width: 100vw;
+  height: 100vh;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.auth-wrapper{
+  padding: 50px;
+  width: 330px;
+  background-color: white;
+  border-radius: 8px;
+}

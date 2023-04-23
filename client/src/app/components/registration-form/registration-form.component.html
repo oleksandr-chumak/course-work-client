@@ -1,0 +1,48 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <h3 class="header">Реєстрація</h3>
+  <div class="fieldWrapper">
+    <h4 class="label" >Email</h4>
+    <input class= "field" type="text" formControlName="email">
+    <div *ngIf="email.invalid && submitted" class="errorList">
+      <p *ngIf="email.hasError('email')"> Неправильний формат емейлу</p>
+      <p *ngIf="email.hasError('minlength') || email.hasError('maxlength')">
+        Емейл повинен бути від 12 до 30 символів
+      </p>
+      <p *ngIf="email.hasError('required')"> Повинен бути емейл</p>
+    </div>
+  </div>
+  <div class="fieldWrapper">
+    <h4 class="label">Username</h4>
+    <input class= "field" type="text" formControlName="username">
+    <div *ngIf="username.invalid && submitted" class="errorList">
+      <p *ngIf="username.hasError('minlength') || email.hasError('maxlength')">
+        Ім'я повинно бути від 8 до 16 символів
+      </p>
+      <p *ngIf="username.hasError('required')"> Повинно бути ім'я</p>
+    </div>
+  </div>
+  <div class="fieldWrapper">
+    <h4 class="label">Password</h4>
+    <input class= "field"  formControlName="password" [type]="isPassword ? 'text' : 'password'">
+    <div *ngIf="password.invalid && submitted" class="errorList">
+      <p *ngIf="password.hasError('minlength') || password.hasError('maxlength')">
+        Пароль повинен бути від 8 до 20 символів
+      </p>
+      <p *ngIf="username.hasError('required')"> Повинен бути пароль</p>
+    </div>
+    <img class="showPassword" [src]="isPassword ? 'assets/img/close-eye.svg' : 'assets/img/open-eye.svg'" (click)="showPassword()"/>
+
+  </div>
+  <div class="fieldWrapper">
+    <h4 class="label">Repeat password</h4>
+    <input class= "field"  formControlName="repeatPassword" [type]="isRetryPassword ? 'text' : 'password'" >
+    <div  *ngIf="repeatPassword.invalid && submitted || f?.hasError('compare') && submitted" class="errorList">
+      <p *ngIf="repeatPassword.hasError('required')"> Повинен бути підтверджуючий пароль</p>
+      <p *ngIf="f?.errors['compare']"> Паролі не співпадають</p>
+    </div>
+    <img class="showPassword" [src]="isRetryPassword ? 'assets/img/close-eye.svg' : 'assets/img/open-eye.svg'" (click)="showRetryPassword()"/>
+  </div>
+  <button class="submit-button">Зарєструватися</button>
+  <p class="error" *ngIf="error">{{error}}</p>
+  <p class="redirect">Вже зарегестровані? <a routerLink="/login">Увійдіть зараз</a></p>
+</form>

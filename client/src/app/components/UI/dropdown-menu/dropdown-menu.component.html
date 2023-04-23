@@ -1,0 +1,9 @@
+<div class="dropdownWrapper">
+  <div (click)="onClick()" class="header">{{header}}</div>
+  <ul [ngClass]="{
+  'titlesWrapperActive': isOpen,
+  'titlesWrapper': !isOpen
+  } " class="titlesWrapper">
+    <a [routerLink]="title.route" class="title" *ngFor="let title of titles">{{title.name}}</a>
+  </ul>
+</div>

@@ -1,0 +1,43 @@
+.navigation{
+  display: flex;
+  align-items: center;
+  width: 1200px;
+}
+.container{
+  margin: 0 auto;
+  width: 1200px;
+}
+.shoppingCartWrapper{
+  display: flex;
+  flex: 1 1 auto;
+  height: 30px;
+  justify-content: end;
+}
+.shoppingCart{
+  position: relative;
+  width: 30px;
+  height: 30px;
+}
+.shoppingCartImage{
+  cursor: pointer;
+  object-fit: contain;
+  width: 100%;
+  height: 100%;
+}
+.countWrapper{
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
+  background-color: red;
+  right: -5px;
+  bottom: -5px;
+}
+.count{
+  color: white;
+  font-size: 10px;
+
+}

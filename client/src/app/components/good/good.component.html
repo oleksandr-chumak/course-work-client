@@ -1,0 +1,14 @@
+<div class="goodWrapper">
+  <div class="imageWrapper">
+    <img class="image" [src]="getImageUrl(goodData.imageUrl)" [alt]="goodData.name">
+  </div>
+  <h3 class="title">{{goodData.name}}</h3>
+  <p class="price">Ціна: {{getFormattedPrice(goodData.price)}} ₴</p>
+  <button *ngIf="shoppingCartService.isAddedToShoppingKart(goodData._id)" class="action" (click)="addToShoppingKart()">
+    Додати до кошика
+  </button>
+  <button *ngIf="!shoppingCartService.isAddedToShoppingKart(goodData._id)" class="action added" (click)="removeFromShoppingKart()" >
+    Вже у кошику
+  </button>
+
+</div>

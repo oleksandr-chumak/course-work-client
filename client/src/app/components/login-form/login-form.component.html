@@ -1,0 +1,27 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <h3 class="header">Авторизуйтеся</h3>
+  <div class="fieldWrapper">
+    <h4 class="label">Email</h4>
+    <input class="field" formControlName="email" type="text" name="email">
+    <div *ngIf="email.invalid && submitted" class="errorList">
+      <p *ngIf="email.hasError('email')"> Неправильний формат емейлу</p>
+      <p *ngIf="email.hasError('minlength')"> Занадто короткий емейл</p>
+      <p *ngIf="email.hasError('maxlength')"> Занадто довгий емейл</p>
+      <p *ngIf="email.hasError('required')"> Повинен бути емейл</p>
+    </div>
+  </div>
+  <div class="fieldWrapper">
+    <h4 class="label">Password</h4>
+    <input class="field" formControlName="password" [type]="isPassword ? 'text' : 'password'" name="password">
+    <div *ngIf="password.invalid && submitted" class="errorList">
+      <p *ngIf="password.hasError('minlength') || password.hasError('maxlength')">
+        Пароль повинен бути від 8 до 20 символів
+      </p>
+      <p *ngIf="password.hasError('required')"> Повинен бути пароль</p>
+    </div>
+    <img class="showPassword" [src]="isPassword ? 'assets/img/close-eye.svg' : 'assets/img/open-eye.svg'" (click)="showPassword()"/>
+  </div>
+  <p class="redirect">Ще не зарегестровані? <a routerLink="/registration">Зарегеструйтеся зараз</a></p>
+  <button type="submit" class="submit-button">Увійти</button>
+  <p *ngIf="error">{{error}}</p>
+</form>

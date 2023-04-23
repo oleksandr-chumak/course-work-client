@@ -1,0 +1,5 @@
+<div class="uploadImageWrapper" (click)="onClick()">
+  <h3 class="header">{{imageUrl ? " " : "Оберіть фото"}}</h3>
+  <img class="image" [src]="imageUrl" alt="">
+  <input #fileInput class="uploadImage" (change)="onFileSelected($event)" accept="image/jpeg,image/png,image/webp" type="file">
+</div>

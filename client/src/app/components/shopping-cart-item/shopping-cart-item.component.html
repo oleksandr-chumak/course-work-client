@@ -1,0 +1,28 @@
+<div class="shoppingCartItemWrapper">
+  <div class="imageWrapper">
+    <img class="image" [src]="helperService.getImageUrl(goodValue.imageUrl)" alt="">
+  </div>
+  <div class="description">
+    <h3 class="title">{{helperService.shortenString(0,18,goodValue.name)}}</h3>
+    <p class="price">Ціна: {{helperService.getFormattedPrice(goodValue.price)}} ₴</p>
+  </div>
+  <div class="countWrapper">
+    <p class="count">{{goodValue.count}} / {{goodValue.availableAmount}}</p>
+  </div>
+  <div class="action">
+      <img
+        class="actionButton"
+        src="assets/img/plus.svg"
+        alt="addCount"
+        *ngIf="goodValue.count !== goodValue.availableAmount"
+        (click)="shoppingKartService.addAmount(goodValue._id)"
+      >
+      <img
+        *ngIf="goodValue.count !== 1"
+        class="actionButton"
+        src="assets/img/minus.svg"
+        alt="removeCount"
+        (click)="shoppingKartService.removeAmount(goodValue._id)"
+      >
+  </div>
+</div>

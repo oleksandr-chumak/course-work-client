@@ -1,0 +1,26 @@
+<div>
+  <nav class="navigation">
+    <div>
+      <img src="" alt="">
+    </div>
+    <ul routerLink="/">
+      <li>Головна</li>
+    </ul>
+    <app-dropdown-menu [header]="'Мої товари'" [titles]="goodTitles"></app-dropdown-menu>
+    <app-dropdown-menu [header]="'Робота з товаром'" [titles]="managerTitles"></app-dropdown-menu>
+    <div class="shoppingCartWrapper">
+      <div class="shoppingCart" (click)="goToShoppingCart()">
+        <img class="shoppingCartImage" src="assets/img/shopping-cart.svg" alt="">
+        <div class="countWrapper" *ngIf="shoppingKartService.shoppingCartValue.length">
+          <p  class="count">{{shoppingKartService.shoppingCartValue.length}}</p>
+        </div>
+      </div>
+
+    </div>
+  </nav>
+
+  <section class="container">
+    <ng-content></ng-content>
+  </section>
+  <footer></footer>
+</div>

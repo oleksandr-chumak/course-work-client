@@ -1,0 +1,41 @@
+.dropdownWrapper{
+  position: relative;
+
+}
+.header{
+  position: relative;
+  background-color: white;
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  width: 200px;
+  font-size: 15px;
+  cursor: pointer;
+}
+.titlesWrapper{
+  transition: 0.3s all ease 0s;
+  position: absolute;
+  top: 50px;
+  width: 200px;
+  z-index: 2;
+  transform: translate(0,-100%);
+}
+.title{
+  background-color: white;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  height: 30px;
+  cursor: pointer;
+
+}
+.titlesWrapperActive{
+  transition: 0.3s all ease 0s;
+  position: absolute;
+  top: 50px;
+  width: 200px;
+  z-index: 2;
+}

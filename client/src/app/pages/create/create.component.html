@@ -1,0 +1,21 @@
+<form [formGroup]="form" (ngSubmit)="handleSubmit()" class="createWrapper">
+  <h2 class="header">Створення товару</h2>
+  <app-upload-image></app-upload-image>
+  <div class="fieldWrapper">
+    <label class="fieldHeader">Ім'я товару</label>
+    <input class="field" type="text" formControlName="name">
+  </div>
+  <div class="fieldWrapper">
+    <label class="fieldHeader">Об'єм</label>
+    <input class="field" type="text" formControlName="unit">
+  </div>
+  <div class="fieldWrapper">
+    <label class="fieldHeader">Ціна</label>
+    <input class="field" type="text" formControlName="price">
+  </div>
+  <div class="fieldWrapper">
+    <label class="fieldHeader">Кількість</label>
+    <input class="field" type="text" formControlName="totalAmount">
+  </div>
+  <button class="submitButton" (click)="handleSubmit()" type="button">Створити товар</button>
+</form>
