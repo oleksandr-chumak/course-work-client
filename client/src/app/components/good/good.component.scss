@@ -1,5 +1,6 @@
 .goodWrapper{
   width: 250px;
+  height: 420px;
   padding: 15px;
   border: 1px solid #919191;
   border-radius: 5px ;
@@ -22,10 +23,37 @@
 
 }
 .title{
+  text-align: center;
+  height: 30px;
+  overflow: hidden;
 
 }
+.priceWrapper{
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  min-width: 60px;
+}
 .price{
-
+  font-weight: bold;
+  font-size: 18px;
+  span{
+    font-size: 22px;
+  }
+}
+.price.discount{
+  color: red;
+}
+.price.withoutDiscount{
+  color: #adacac;
+  font-size: 12px;
+  span{
+    text-decoration: line-through;
+    font-size: 14px;
+  }
 }
 .action{
   transition: all 0.3s ease 0s;
@@ -40,6 +68,10 @@
     background-color: #34138c;
   }
 
+}
+.action.disabled{
+  background-color: #333333;
+  cursor: auto;
 }
 .action.added{
   background-color: #12de52;

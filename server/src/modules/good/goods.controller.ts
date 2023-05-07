@@ -1,7 +1,8 @@
-import {Body, Controller, Get, Param, Post, Req, UploadedFile, UseInterceptors} from "@nestjs/common";
+import { Body, Controller, Delete, Get, Param, Post, Put, Req, UploadedFile, UseInterceptors } from "@nestjs/common";
 import {GoodsService } from "./goods.service";
 import {FileInterceptor} from "@nestjs/platform-express";
 import { diskStorage } from 'multer';
+import { UpdateCountDto } from "./dto/update-count.dto";
 const { uuid } = require('uuidv4');
 
 @Controller("/goods")
@@ -17,7 +18,15 @@ export class GoodsController {
   async getAll(){
     return await this.goodsService.getAll();
   }
+  @Put("/update/count/one")
+  updateCountOne(@Body() data:UpdateCountDto){
+    return this.goodsService.updateGoodCount(data.amount,data.id)
+  }
 
+  @Get("get/byName/:name")
+  async getGoodsByName(@Param("name") name:string){
+    return this.goodsService.findGoodsByName(name);
+  }
   @Post("create")
   @UseInterceptors(FileInterceptor('image', {
     storage: diskStorage({
@@ -51,5 +60,10 @@ export class GoodsController {
   @Get("/inventory")
   async InventoryOfRemains(){
     return await this.goodsService.inventory()
+  }
+
+  @Delete("/delete/:id")
+  async deleteGood(@Param("id") id:string){
+    return this.goodsService.deleteGood(id);
   }
 }

@@ -4,7 +4,12 @@
   </div>
   <div class="description">
     <h3 class="title">{{helperService.shortenString(0,18,goodValue.name)}}</h3>
-    <p class="price">Ціна: {{helperService.getFormattedPrice(goodValue.price)}} ₴</p>
+    <p *ngIf="!goodValue.discount" class="price">Ціна: <span>{{helperService.getFormattedPrice(goodValue.price)}}</span> ₴</p>
+    <div class="priceWrapper" *ngIf="goodValue.discount">
+      <p class="priceTitle">Ціна</p>
+      <p class="price discount"><span>{{helperService.getFormattedPrice(goodValue.price)}}</span> ₴</p>
+      <p class="discount"><span>{{helperService.getFormattedPrice(goodValue.discount.newPrice)}}</span> ₴</p>
+    </div>
   </div>
   <div class="countWrapper">
     <p class="count">{{goodValue.count}} / {{goodValue.availableAmount}}</p>

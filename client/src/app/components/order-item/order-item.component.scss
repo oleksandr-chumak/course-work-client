@@ -1,0 +1,38 @@
+.wrapper{
+  border: 1px solid #a8a8a8;
+  padding: 40px;
+  border-radius: 10px;
+}
+.header{
+  text-align: center;
+  font-weight: bold;
+  margin: 0 0 20px 0;
+}
+.propertiesList{
+  display: flex;
+  gap: 20px;
+}
+
+.propertiesItem{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+.image{
+  flex: 0 0 60px;
+}
+.name{
+  flex: 1 1 auto;
+}
+.count{
+  flex: 0 0 80px;
+}
+.price{
+  flex: 0 0 100px;
+}
+.totalPrice{
+  font-weight: bold;
+  margin-top: 20px;
+  text-align: end;
+}

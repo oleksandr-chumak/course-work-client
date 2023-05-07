@@ -1,0 +1,42 @@
+<div class="wrapper">
+  <h3>Зробити знижку на товари</h3>
+  <div class="fieldWrapper">
+    <input [(ngModel)]="searchValue" (ngModelChange)="onChange($event)" class="field active"
+           placeholder="Введіть назву товару" type="text">
+    <div *ngIf="discountService.isLoading || discountService.discountValue.length" class="discountGoodList">
+      <app-loading *ngIf="discountService.isLoading" class="loading"></app-loading>
+      <div class="discountGoodListWrapper" *ngIf="!discountService.isLoading">
+        <app-discount-item
+          *ngFor="let discountItemValue of discountService.discountValue"
+          [discountItemValue]="discountItemValue"
+        >
+        </app-discount-item>
+      </div>
+    </div>
+    <div class="selectedItemWrapper" *ngIf="discountService.selectedItem">
+      <div class="discountDeleteWrapper" *ngIf="discountService.selectedItem.discount">
+        <h3 class="discountDeleteTitle">Видалення знижки</h3>
+        <button (click)="onDelete()" class="selectedItemAction delete">ВИДАЛАТИ ЗНИЖКУ</button>
+      </div>
+      <h3 class="selectedItemHeader">Оберіть нову ціну</h3>
+      <div class="selectedItemDescription">
+        <p class="selectedItemPrice">Стара ціна:{{discountService.selectedItem.price}}</p>
+        <p class="selectedItemDiscountPrice" *ngIf="discountService.selectedItem.discount">
+          Ціна зі знижкою: {{discountService.selectedItem.discount.newPrice}}
+        </p>
+      </div>
+      <div class="selectedItemFieldWrapper">
+        <label class="selectedItemFieldTitle">Нова ціна</label>
+        <input [(ngModel)]="newPrice" class="selectedItemFiled" placeholder="Введіть нову ціну" type="text">
+        <p class="error">{{this.error}}</p>
+      </div>
+      <button *ngIf="discountService.selectedItem.discount" (click)="onSubmit()" class="selectedItemAction">
+        ОНОВИТИ ЗНИЖКУ
+      </button>
+      <button *ngIf="!discountService.selectedItem.discount" (click)="onSubmit()" class="selectedItemAction">
+        СТВОРИТИ ЗНИЖКУ
+      </button>
+    </div>
+
+  </div>
+</div>

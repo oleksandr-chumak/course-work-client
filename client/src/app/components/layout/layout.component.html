@@ -11,8 +11,11 @@
     <div class="shoppingCartWrapper">
       <div class="shoppingCart" (click)="goToShoppingCart()">
         <img class="shoppingCartImage" src="assets/img/shopping-cart.svg" alt="">
-        <div class="countWrapper" *ngIf="shoppingKartService.shoppingCartValue.length">
-          <p  class="count">{{shoppingKartService.shoppingCartValue.length}}</p>
+        <div class="countWrapper" *ngIf="
+        shoppingKartService.shoppingCartValue !== null
+        && shoppingKartService.shoppingCartValue.length"
+        >
+          <p class="count">{{shoppingKartService.shoppingCartValue.length}}</p>
         </div>
       </div>
 

@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import { FormControl, FormGroup, Validators} from "@angular/forms";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {AccountService} from "../../_service/account.service";
-import { Router} from "@angular/router";
+import {Router} from "@angular/router";
 import {catchError, throwError} from "rxjs";
 
 @Component({
@@ -13,18 +13,17 @@ export class LoginFormComponent implements OnInit {
   form!: FormGroup
   submitted = false;
   isPassword = false;
-  error: string = "";
 
 
   constructor(
-    private accountService: AccountService,
+    public accountService: AccountService,
     private route: Router
   ) {
 
 
   }
 
-  async ngOnInit(): Promise<void> {
+  ngOnInit() {
     this.form = new FormGroup<any>({
       email: new FormControl("", [
         Validators.required,
@@ -37,9 +36,7 @@ export class LoginFormComponent implements OnInit {
         Validators.minLength(8),
         Validators.maxLength(20)
       ])
-
     })
-
   }
 
   showPassword() {
@@ -56,25 +53,11 @@ export class LoginFormComponent implements OnInit {
   }
 
 
-  async onSubmit() {
-    console.log(this.accountService.userValue)
+  onSubmit() {
     this.submitted = true
     if (this.form.invalid) {
       return
     }
     this.accountService.login(this.email.value, this.password.value)
-      .pipe(
-        catchError((err) => {
-          console.log("Тут ошибка")
-          console.log(err)
-          this.error = err.message;
-          return throwError(err);
-        })
-      )
-      .subscribe(() => {
-        console.log(1)
-        this.route.navigate(["/"])
-      })
-
   }
 }

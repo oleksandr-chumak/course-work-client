@@ -16,6 +16,8 @@ export class UserUnauthorizedGuard implements CanActivate {
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot):
     Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     const isAuthenticated = this.accountService.isAuthenticated()
+    console.log("Чё выдаёт гуард про юзера")
+    console.log(isAuthenticated)
     if(!isAuthenticated){
       return this.router.parseUrl("/login");
     }

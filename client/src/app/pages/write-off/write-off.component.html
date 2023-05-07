@@ -1,0 +1,18 @@
+<div class="wrapper">
+  <h2 class="header">Списати товар</h2>
+  <div class="fieldWrapper">
+    <input [(ngModel)]="selectedName" (ngModelChange)="onChange($event)" class="goodField" placeholder="Напишіть назву товару" type="text">
+    <div  *ngIf="writeOffService.isLoading || writeOffService.goodValue.length" class="goodList">
+      <app-loading *ngIf="writeOffService.isLoading" class="loading"></app-loading>
+      <div class="goodWrapper" *ngIf="!writeOffService.isLoading">
+        <app-write-off-item
+          *ngFor ="let item of writeOffService.goodValue"
+          [writeOffItemValue]="item"
+        ></app-write-off-item>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="writeOffService.selectedGood" class="actionWrapper">
+    <button (click)="onSubmit()" class="action">СПИСАТИ ТОВАР</button>
+  </div>
+</div>

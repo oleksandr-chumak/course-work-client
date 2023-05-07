@@ -32,7 +32,6 @@ export class AuthService {
     }
   }
   async registration(data:RegistrationDto){
-    console.log(data)
     const user = await this.userService.getByEmail(data.email);
     if (user){
       throw new UnauthorizedException("Користувач с таким емейлом вже зарегестрований");

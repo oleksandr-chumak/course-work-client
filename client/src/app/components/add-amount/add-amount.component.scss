@@ -1,0 +1,69 @@
+.wrapper{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.field {
+  width: 400px;
+  height: 40px;
+  border: 1px solid gray;
+  border-radius: 10px;
+  outline: none;
+}
+.active {
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.goodList {
+  position: relative;
+  width: 400px;
+  height: 300px;
+  overflow: auto;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  margin-bottom: 20px;
+}
+.loading {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+.selectedWrapper{
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  width: 400px;
+  gap: 5px;
+}
+.selectedItemFieldTitle {
+  margin-bottom: 5px;
+
+}
+
+.selectedItemFiled {
+  border-radius: 10px;
+  height: 40px;
+  border: 1px solid black;
+  outline:none;
+  padding-left: 10px;
+}
+
+.selectedItemAction {
+  border-radius: 15px ;
+  background-color: #521ed9;
+  color: white;
+  cursor: pointer;
+  font-size: 12px;
+  border: 0;
+  transition: all 0.3s ease 0s;
+  padding: 10px 15px;
+  &:hover{
+    background-color: #3a1698;
+  }
+}
+.error{
+  font-size: 10px;
+  color: red;
+}

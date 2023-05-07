@@ -9,24 +9,26 @@ import {FileService} from "../../_service/file.service";
 })
 export class UploadImageComponent {
   @ViewChild("fileInput") fileInput: ElementRef;
-  imageUrl:string | null = null ;
+  imageUrl: string | null = null;
 
-  constructor(private fileService:FileService) {
+  constructor(private fileService: FileService) {
   }
-  onClick(){
+
+  onClick() {
     this.fileInput.nativeElement.click()
   }
-  onFileSelected(event:any){
-    const file = event.target.files[0];
-    this.fileService.setFile(file);
 
+  onFileSelected(event: any) {
+    const file = event.target.files[0];
+    if (!file) {
+      return;
+    }
+    this.fileService.setFile(file);
     const fileReader = new FileReader();
     fileReader.onload = (e: any) => {
       this.imageUrl = e.target.result;
     };
 
-    if (file) {
-      fileReader.readAsDataURL(file);
-    }
+    fileReader.readAsDataURL(file);
   }
 }

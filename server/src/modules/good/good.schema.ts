@@ -1,7 +1,7 @@
 import * as mongoose from 'mongoose';
 import {Prop, Schema, SchemaFactory} from '@nestjs/mongoose';
 import {HydratedDocument} from 'mongoose';
-import {Order } from "../order/order.schema";
+import {Discount} from "../discount/discount.schema";
 
 export type GoodDocument = HydratedDocument<Good>;
 
@@ -19,9 +19,10 @@ export class Good {
   totalAmount: number;
   @Prop({isNaN:true})
   imageUrl: string;
-  @Prop({type:mongoose.Schema.Types.ObjectId,ref: "Order",isRequired:false,isNaN:true})
-  order: Order;
-
+  @Prop({type:mongoose.Schema.Types.ObjectId,ref: "Discount",isRequired:false,default:null})
+  discount: mongoose.Types.ObjectId;
+  @Prop({type:Date,default:null})
+  deletedAt:Date
 }
 
 export const GoodSchema = SchemaFactory.createForClass(Good);

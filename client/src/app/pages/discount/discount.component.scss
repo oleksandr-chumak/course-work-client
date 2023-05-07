@@ -1,0 +1,130 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.fieldWrapper {
+  display: flex;
+  flex-direction: column;
+
+}
+
+.field {
+  width: 400px;
+  height: 40px;
+  border: 1px solid gray;
+  border-radius: 10px;
+  outline: none;
+}
+
+.active {
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.discountGoodList {
+  position: relative;
+  width: 400px;
+  height: 300px;
+  overflow: auto;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.discountGoodListWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.loading {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.selectedItemWrapper {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+
+}
+.discountDeleteWrapper{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.discountDeleteTitle{
+  margin-bottom: 10px;
+
+}
+.discountDeleteAction{
+
+}
+
+.selectedItemHeader {
+
+}
+
+.selectedItemDescription {
+  width: 100%;
+
+}
+
+.selectedItemPrice {
+
+}
+
+.selectedItemDiscountPrice {
+
+}
+
+.selectedItemFieldWrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.selectedItemFieldTitle {
+  margin-bottom: 5px;
+
+}
+
+.selectedItemFiled {
+  border-radius: 10px;
+  height: 40px;
+  border: 1px solid black;
+  outline:none;
+  padding-left: 10px;
+}
+
+.selectedItemAction {
+  border-radius: 15px ;
+  background-color: #521ed9;
+  color: white;
+  cursor: pointer;
+  font-size: 12px;
+  border: 0;
+  transition: all 0.3s ease 0s;
+  padding: 10px 15px;
+  &:hover{
+    background-color: #3a1698;
+  }
+}
+.selectedItemAction.delete{
+  background-color: red;
+  &:hover{
+    background-color: red;
+  }
+}
+.error{
+  margin-top: 5px;
+  color: red;
+  font-size: 10px;
+}

@@ -1,0 +1,16 @@
+<div class="wrapper">
+  <h3>Надходження товару</h3>
+  <input class="field active" type="text" [(ngModel)]="searchGoodValue" (ngModelChange)="onChange($event)">
+  <div class="goodList" *ngIf="writeOffService.isLoading || writeOffService.goodValue.length">
+    <app-loading *ngIf="writeOffService.isLoading" class="loading"></app-loading>
+    <div *ngIf="!writeOffService.isLoading">
+      <app-add-amount-item *ngFor="let item of writeOffService.goodValue" [goodData]="item"></app-add-amount-item>
+    </div>
+  </div>
+  <div class="selectedWrapper" *ngIf="writeOffService.selectedGood">
+    <label class="selectedItemFieldTitle">Кількість завезеного товару</label>
+    <input class="selectedItemFiled" [(ngModel)]="amountValue" placeholder="Введіть кількість завезеного товару" type="text">
+    <p class="error">{{error}}</p>
+    <button class="selectedItemAction"  (click)="onSubmit()">ЗАВЕСТИ ТОВАР</button>
+  </div>
+</div>

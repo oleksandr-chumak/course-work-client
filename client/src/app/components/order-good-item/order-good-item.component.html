@@ -1,0 +1,10 @@
+<div class="wrapper" [ngClass]="{
+  'highlighter': index % 2 === 0
+}">
+  <div class="imageWrapper">
+    <img class="goodImage" [src]="helperService.getImageUrl(order.data.imageUrl)" alt="">
+  </div>
+  <div class="name">{{order.data.name}}</div>
+  <div class="count center">{{order.orderCount}}</div>
+  <div class="price center">{{helperService.getFormattedPrice(getTotalPrice())}} ₴</div>
+</div>

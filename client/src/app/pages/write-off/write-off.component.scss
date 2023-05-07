@@ -1,0 +1,67 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+
+
+.header {
+
+}
+
+.fieldWrapper {
+
+
+}
+
+.goodField {
+  padding-left: 10px;
+  width: 400px;
+  height: 40px;
+  border: 1px solid gray;
+  border-radius: 10px;
+  outline: none;
+}
+
+.goodList {
+  position: relative;
+  width: 400px;
+  height: 300px;
+  overflow: auto;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  margin-bottom: 20px;
+}
+.goodWrapper{
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.actionWrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.action {
+  border-radius: 15px;
+  background-color: #521ed9;
+  color: white;
+  cursor: pointer;
+  font-size: 12px;
+  border: 0;
+  transition: all 0.3s ease 0s;
+  padding: 10px 15px;
+
+  &:hover {
+    background-color: #3a1698;
+  }
+}
+.loading {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}

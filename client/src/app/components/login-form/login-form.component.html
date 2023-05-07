@@ -23,5 +23,5 @@
   </div>
   <p class="redirect">Ще не зарегестровані? <a routerLink="/registration">Зарегеструйтеся зараз</a></p>
   <button type="submit" class="submit-button">Увійти</button>
-  <p *ngIf="error">{{error}}</p>
+  <p *ngIf="accountService.loginError">{{accountService.loginError}}</p>
 </form>

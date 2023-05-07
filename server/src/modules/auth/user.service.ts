@@ -19,11 +19,6 @@ export class UserService{
   async getById(id:ObjectId){
     return this.userModel.findById(id);
   }
-  async getByUsername(username:string){
-    return this.userModel.findOne({
-      username
-    })
-  }
   async getByEmail(email:string){
     return this.userModel.findOne({
       email

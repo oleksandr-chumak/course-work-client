@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {BehaviorSubject, catchError, defer, EMPTY, map, Observable, switchMap, tap, throwError} from "rxjs";
+import {BehaviorSubject, catchError, defer, EMPTY, map, Observable, skip, switchMap, tap, throwError} from "rxjs";
 import {User} from "../_models/user";
 import {Router} from "@angular/router";
 import {HttpClient} from "@angular/common/http";
@@ -10,9 +10,9 @@ import {AccessToken} from "../_interface/accessToken";
   providedIn: 'root'
 })
 export class AccountService {
-  private userSubject: BehaviorSubject<User | null>;
+  private readonly userSubject: BehaviorSubject<User | null>;
   public user: Observable<User | null>;
-  public isUserLoading: boolean = false;
+  public loginError: string = "";
 
   constructor(
     private router: Router,
@@ -31,22 +31,41 @@ export class AccountService {
   }
 
   login(email: string, password: string) {
-    return this.http.post<User>(`${environment.apiUrl}/auth/login`, {email, password})
+    this.http.post<User>(`${environment.apiUrl}/auth/login`, {email, password})
       .pipe(
         map(user => {
           localStorage.setItem("credentials", JSON.stringify(user))
           return user;
+        }),
+        catchError((err, caught) =>{
+          this.loginError = err
+          return EMPTY
         })
       )
+      .subscribe(async () =>{
+        await this.update()
+        await this.router.navigate(["/"])
+      })
+  }
+  update():Promise<void>{
+    return new Promise<void>((resolve, reject) => {
+      this.getMe();
+      this.user
+        .pipe(
+          skip(1)
+        )
+        .subscribe((value) => {
+            resolve();
+          }
+        )
+    })
   }
 
   register(user: User) {
-    console.log(user)
     return this.http.post<User>(`${environment.apiUrl}/auth/registration`, user);
   }
 
   getMe() {
-    this.isUserLoading = true;
     const user$ = defer(() => {
       return this.http.get<User>(`${environment.apiUrl}/auth/me`)
         .pipe(
@@ -57,7 +76,7 @@ export class AccountService {
                   return this.http.get<User>(`${environment.apiUrl}/auth/me`);
                 }),
                 catchError((err) => {
-                  this.isUserLoading = false;
+                  this.setUserValue(null);
                   return EMPTY;
                 })
               )
@@ -67,7 +86,8 @@ export class AccountService {
 
     user$.subscribe((value) => {
       this.setUserValue(value);
-      this.isUserLoading = false;
+    }, (error) => {
+      this.userSubject.error(error)
     });
   }
 

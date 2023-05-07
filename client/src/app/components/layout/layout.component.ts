@@ -25,9 +25,17 @@ export class LayoutComponent {
       route: "/create"
     },
     {
-      name: "Уцінка і списання",
-      route: "/deprecation"
+      name: "Уцінка",
+      route: "/discount"
     },
+    {
+      name: "Списання",
+      route:"/write-off"
+    },
+    {
+      name: "База наявності товарів",
+      route:"/goods-availability"
+    }
   ]
   constructor(
     public shoppingKartService:ShoppingCartService,

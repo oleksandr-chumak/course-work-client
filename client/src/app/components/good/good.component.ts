@@ -29,6 +29,15 @@ export class GoodComponent {
   removeFromShoppingKart(){
     this.shoppingCartService.removeFromShoppingKart(this.goodData._id);
   }
+  isDiscount(){
+    return this.goodData.discount
+  }
 
+  isEnded(){
+    return this.goodData.availableAmount === 0
+  }
+  isAddedToShoppingKart(){
+    return this.shoppingCartService.isAddedToShoppingKart(this.goodData._id)
+  }
 
 }

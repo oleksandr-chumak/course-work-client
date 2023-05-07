@@ -1,0 +1,41 @@
+.wrapper{
+  width: 100%;
+  height: 70px;
+  border-radius: 10px;
+  display: flex;
+  gap: 5px;
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+  &:hover{
+    background-color: rgba(123, 92, 199, 0.4);
+  }
+}
+.wrapper.selected{
+  cursor: auto;
+  &:hover{
+    background-color: rgba(117, 201, 134, 0.4);
+  }
+}
+.selected{
+  background-color: rgba(117, 201, 134, 0.4);
+}
+.imageWrapper{
+  height: 70px;
+  flex: 0 0 70px;
+}
+.goodImage{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.nameSection{
+  flex: 1 1 200px;
+  overflow: hidden;
+}
+.title{
+  text-align: center;
+  font-size: 12px;
+}
+.amount{
+  text-align: center;
+}

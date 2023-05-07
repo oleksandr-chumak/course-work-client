@@ -1,0 +1,22 @@
+<div class="wrapper">
+  <h3 class="header">Замолення номер {{index + 1}}</h3>
+  <div >
+    <ul class="propertiesList">
+      <li class="propertiesItem image">Фото</li>
+      <li class="propertiesItem name">Назва</li>
+      <li class="propertiesItem count">Кількість</li>
+      <li class="propertiesItem price">Ціна</li>
+    </ul>
+    <div>
+      <app-order-good-item
+        *ngFor="let order of order.good;index as i"
+        [order]="order"
+        [index]="i"
+      >
+
+      </app-order-good-item>
+    </div>
+  </div>
+
+  <p class="totalPrice">Загальна ціна {{helperService.getFormattedPrice(order.price)}} ₴</p>
+</div>

@@ -1,0 +1,18 @@
+<table >
+  <tr>
+    <td>Назва товару</td>
+    <td>Одиниці виміру</td>
+    <td>Ціна одиниці</td>
+    <td>Кількість</td>
+    <td>В наявності</td>
+    <td>Дата останнього завезення</td>
+  </tr>
+  <tr *ngFor="let item of goodsAvailabilityService.goodsAvailabilityValue">
+    <td>{{item.name}}</td>
+    <td>{{item.unit}}</td>
+    <td>{{item.discount ? item.discount.newPrice : item.price}}</td>
+    <td>{{item.availableAmount}}</td>
+    <td>{{item.deletedAt ? "Товар списано": "В наявності"}}</td>
+    <td>{{parseDate(item.updatedAt)}}</td>
+  </tr>
+</table>

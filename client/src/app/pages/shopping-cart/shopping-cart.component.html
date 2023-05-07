@@ -1,9 +1,14 @@
-<div class="shoppingCartWrapper">
-  <h2>Корзина товарів</h2>
-  <app-shopping-cart-item
-    *ngFor="let goodValue of shoppingCartService.shoppingCartValue"
-    [goodValue]="goodValue"
-  ></app-shopping-cart-item>
-  <p>Ціна:{{helperService.getFormattedPrice(shoppingCartService.getTotalPrice())}} ₴</p>
-  <button class="submitButton" (click)="shoppingCartService.createOrder()">Замовити</button>
+<div >
+  <div class="alert" *ngIf="!shoppingCartService.shoppingCartValue.length">
+    <p class="alertText" >На жаль, наразі нічого немає <br> Додайте щось </p>
+  </div>
+  <div *ngIf="shoppingCartService.shoppingCartValue.length" class="shoppingCartWrapper">
+    <h2>Корзина товарів</h2>
+    <app-shopping-cart-item
+      *ngFor="let goodValue of shoppingCartService.shoppingCartValue"
+      [goodValue]="goodValue"
+    ></app-shopping-cart-item>
+    <p>Ціна:{{helperService.getFormattedPrice(shoppingCartService.getTotalPrice())}} ₴</p>
+    <button class="submitButton" (click)="shoppingCartService.createOrder()">Замовити</button>
+  </div>
 </div>

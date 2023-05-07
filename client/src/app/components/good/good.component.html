@@ -3,12 +3,28 @@
     <img class="image" [src]="getImageUrl(goodData.imageUrl)" [alt]="goodData.name">
   </div>
   <h3 class="title">{{goodData.name}}</h3>
-  <p class="price">Ціна: {{getFormattedPrice(goodData.price)}} ₴</p>
-  <button *ngIf="shoppingCartService.isAddedToShoppingKart(goodData._id)" class="action" (click)="addToShoppingKart()">
+  <div class="priceWrapper">
+    <p>Ціна</p>
+    <p
+      class="price"
+      [ngClass]="{
+        'withoutDiscount':isDiscount()
+      }"
+    >
+      <span>{{getFormattedPrice(goodData.price)}}</span> ₴
+    </p>
+    <p class="price discount" *ngIf="isDiscount()">
+      <span>{{getFormattedPrice(goodData.discount.newPrice)}}</span> ₴
+    </p>
+  </div>
+  <button *ngIf="isAddedToShoppingKart() && !isEnded()" class="action" (click)="addToShoppingKart()">
     Додати до кошика
   </button>
-  <button *ngIf="!shoppingCartService.isAddedToShoppingKart(goodData._id)" class="action added" (click)="removeFromShoppingKart()" >
+  <button *ngIf="!isAddedToShoppingKart() && !isEnded()" class="action added"
+          (click)="removeFromShoppingKart()">
     Вже у кошику
   </button>
+  <button class="action disabled" *ngIf="isEnded()">Немає в наявності</button>
+
 
 </div>

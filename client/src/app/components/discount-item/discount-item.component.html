@@ -1,0 +1,18 @@
+<div [ngClass]="{
+  'selected':isSelected(),
+
+}" (click)="setSelectedItem()" class="wrapper">
+  <div class="imageWrapper">
+    <img class="goodImage" [src]="helperService.getImageUrl(discountItemValue.imageUrl)" alt="">
+  </div>
+  <div class="nameSection">{{discountItemValue.name}}</div>
+  <div class="priceSection">
+    <h5 class="priceTitle">Ціна</h5>
+    <p class="priceValue">{{discountItemValue.price}}</p>
+  </div>
+  <div class="discountPriceSection">
+    <h5 class="discountPriceTitle">Ціна зі снижкою</h5>
+    <p class="discountPriceValue" *ngIf="discountItemValue.discount">{{discountItemValue.discount.newPrice}}</p>
+    <p class="discountPriceError" *ngIf="!discountItemValue.discount">Наразі знижки немає</p>
+  </div>
+</div>

@@ -1,0 +1,22 @@
+<div *ngIf="inventoryService.inventoryValue">
+  <table>
+    <tr>
+      <td>Назва товару</td>
+      <td>Доступна кількість</td>
+      <td>Загальна кількість</td>
+      <td>Ціна за одиницю</td>
+      <td>Ціна за весь доступний товар</td>
+      <td>Ціна за весь товар</td>
+    </tr>
+    <tr *ngFor="let item of inventoryService.inventoryValue.goods">
+      <td>{{item.name}}</td>
+      <td>{{item.availableAmount}}</td>
+      <td>{{item.totalAmount}}</td>
+      <td>{{item.priceForOne}}</td>
+      <td>{{item.totalAvailablePrice}}</td>
+      <td>{{item.totalPrice}}</td>
+    </tr>
+  </table>
+  <p>Загальна ціна:{{inventoryService.inventoryValue.totalValue}} ₴</p>
+</div>
+

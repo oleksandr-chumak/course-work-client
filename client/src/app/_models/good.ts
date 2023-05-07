@@ -6,4 +6,11 @@ export interface Good{
   availableAmount?: number;
   totalAmount: number;
   imageUrl: string;
+  deletedAt: Date | null;
+  updatedAt: string;
+  discount?:{
+    _id:string,
+    good:string,
+    newPrice:number
+  }
 }

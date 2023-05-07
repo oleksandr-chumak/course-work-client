@@ -19,3 +19,14 @@
     background-color: #34138c;
   }
 }
+.alert{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: calc(100vh - 56px);
+}
+.alertText{
+  text-align: center;
+  font-size: 20px;
+}

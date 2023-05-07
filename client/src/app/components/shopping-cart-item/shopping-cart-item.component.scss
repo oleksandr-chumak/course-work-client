@@ -25,11 +25,39 @@
 }
 
 .title {
+  height: 30px;
+  overflow: hidden;
+
+}
+.priceTitle{
+}
+.price {
+  line-height: 25px;
+  font-size: 14px;
+  span{
+    font-size: 18px;
+  }
+}
+.priceWrapper{
+  line-height: 25px;
+  display: flex;
+  gap: 5px;
+}
+.price.discount{
+  color: gray;
+  span{
+    text-decoration: line-through;
+  }
 
 }
 
-.price {
+.discount{
+  color: red;
+  font-size: 14px;
+  span{
+    font-size: 18px;
 
+  }
 }
 
 .action {
